@@ -1,18 +1,17 @@
-name: Halo CI
+name: CI
 
 on:
   push:
     branches: [main]
 
 jobs:
-  sapa:
+  tes:
     runs-on: ubuntu-latest
     steps:
-      - name: Ambil kode
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Cetak pesan
-        run: echo "Halo, ini pipeline pertamaku!"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Lihat isi repo
-        run: ls -la
+      - run: npm test
